@@ -2,9 +2,11 @@
   <div id="app">
     <TodoHeader></TodoHeader>
 <!--    <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>-->
+<!--    <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleOneItem"></TodoList>-->
+<!--    <TodoFooter v-on:clearItems="clearAllItems"></TodoFooter>-->
     <TodoInput></TodoInput>
-    <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleOneItem"></TodoList>
-    <TodoFooter v-on:clearItems="clearAllItems"></TodoFooter>
+    <TodoList></TodoList>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -27,20 +29,20 @@ export default {
     //   localStorage.setItem(todoItem, JSON.stringify(obj));
     //   this.todoItems.push(obj);
     // },
-    removeOneItem(todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);  // slice()는 새로운 배열을 반환
-    },
-    toggleOneItem(todoItem, index) {
-      // todoItem.completed = !todoItem.completed; // 자식 컴포넌트에게서 받은 데이터를 통짜로 받아서 값 수정하고 다시 내리는 거는 좋지 않은 패턴
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      localStorage.removeItem(todoItem.item); // update하는 API가 없어서 삭제 후, 변경된 completed 값으로 set
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
-    clearAllItems() {
-      localStorage.clear();
-      this.todoItems = [];
-    }
+    // removeOneItem(todoItem, index) {
+    //   localStorage.removeItem(todoItem.item);
+    //   this.todoItems.splice(index, 1);  // slice()는 새로운 배열을 반환
+    // },
+    // toggleOneItem(todoItem, index) {
+    //   // todoItem.completed = !todoItem.completed; // 자식 컴포넌트에게서 받은 데이터를 통짜로 받아서 값 수정하고 다시 내리는 거는 좋지 않은 패턴
+    //   this.todoItems[index].completed = !this.todoItems[index].completed;
+    //   localStorage.removeItem(todoItem.item); // update하는 API가 없어서 삭제 후, 변경된 completed 값으로 set
+    //   localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    // },
+    // clearAllItems() {
+    //   localStorage.clear();
+    //   this.todoItems = [];
+    // }
   },
   components: {
     // 컴포넌트 태그명 : 컴포넌트 내용
