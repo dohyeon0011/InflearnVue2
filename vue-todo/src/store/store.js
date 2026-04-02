@@ -1,33 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import todoApp from './modules/todoApp'
+// import * as getters from './getters'
+// import * as mutations from './mutations'
 
 Vue.use(Vuex);
 
-const storage = {
-  fetch() {
-    const arr = [];
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== 'loglevel:webapck-dev-server') {
-          arr.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        }
-      }
-    }
-    return arr;
-  }
-}
-
 export const store = new Vuex.Store({
-  state: {
+  modules: {
+    todoApp
+  }
+  /*state: {
     // headerText: 'TODO it'
     todoItems: storage.fetch()
-  },
-  getters: {
-    storedTodoItems(state) {
-      return state.todoItems;
-    }
-  },
-  mutations: {
+  },*/
+  /*getters,
+  mutations*/
+  // getters: {
+  //   storedTodoItems(state) {
+  //     return state.todoItems;
+  //   }
+  // },
+  /*mutations: {
     addOneItem(state, todoItem) {
       const obj = {complete: false, item: todoItem};
       localStorage.setItem(todoItem, JSON.stringify(obj));
@@ -47,5 +41,5 @@ export const store = new Vuex.Store({
       localStorage.clear();
       state.todoItems = [];
     }
-  }
+  }*/
 });
